@@ -1,0 +1,13 @@
+{
+  "name": "smart-mattress-advisor/plugin",
+  "description": "Smart Mattress Advisor plugin",
+  "type": "wordpress-plugin",
+  "require": {
+    "mpdf/mpdf": "^8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmartMattressAdvisor\\": "includes/"
+    }
+  }
+}
