@@ -228,8 +228,8 @@ function mattress_advisor_rules_page() {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="edit_product_id">محصول پیشنهادی *</label>
-                            <select name="product_id" id="edit_product_id" class="mattress-product-select" required disabled>
+                            <label for="edit_product_id">محصولات پیشنهادی *</label>
+                            <select name="product_id[]" id="edit_product_id" class="mattress-product-select" required disabled multiple>
                                 <option value="">ابتدا دسته‌بندی را انتخاب کنید</option>
                                 <?php foreach($products as $product): ?>
                                     <?php $category_ids = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'ids']); ?>
@@ -365,7 +365,7 @@ function mattress_advisor_rules_page() {
                         </div>
                         <div class="form-row">
                             <div class="form-group"><label for="edit_facade_style">سبک نما</label><select name="facade_style" id="edit_facade_style"><option value="">انتخاب کنید</option><option value="modern">مدرن</option><option value="neo_classic">نئو کلاسیک</option><option value="classic">کلاسیک</option></select></div>
-                            <div class="form-group"><label for="edit_entrance_material">متریال درب ورودی</label><select name="entrance_material" id="edit_entrance_material"><option value="">انتخاب کنید</option><option value="wood">چوب</option><option value="metal">فلزی</option><option value="glass">شیشه</option><option value="thermowood">ترمو وود</option><option value="mdf">MDF</option><option value="synthetic_coating">روکش مصنوعی</option></select></div>
+                            <div class="form-group"><label for="edit_entrance_material">متریال درب ورودی</label><select name="entrance_material[]" id="edit_entrance_material" multiple><option value="">انتخاب کنید</option><option value="wood">چوب</option><option value="metal">فلزی</option><option value="glass">شیشه</option><option value="thermowood">ترمو وود</option><option value="mdf">MDF</option><option value="synthetic_coating">روکش مصنوعی</option></select></div>
                         </div>
                         <div class="form-row">
                             <div class="form-group"><label>عرض درب (بازه)</label><div class="range-row"><input type="number" name="door_width_min" min="60" max="350" placeholder="حداقل"><input type="number" name="door_width_max" min="60" max="350" placeholder="حداکثر"></div></div>
@@ -437,8 +437,8 @@ function mattress_advisor_rules_page() {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="product_id">محصول پیشنهادی *</label>
-                            <select name="product_id" id="product_id" class="mattress-product-select" required disabled>
+                            <label for="product_id">محصولات پیشنهادی *</label>
+                            <select name="product_id[]" id="product_id" class="mattress-product-select" required disabled multiple>
                                 <option value="">ابتدا دسته‌بندی را انتخاب کنید</option>
                                 <?php foreach($products as $product): ?>
                                     <?php $category_ids = wp_get_post_terms($product->get_id(), 'product_cat', ['fields' => 'ids']); ?>

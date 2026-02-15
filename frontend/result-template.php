@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-function mattress_advisor_render_result( $product, $form_data, $related_products = [], $display_options = [], $history_id = null ) {
+function mattress_advisor_render_result( $product, $form_data, $related_products = [], $display_options = [], $history_id = null, $showcase_products = [] ) {
     global $wpdb;
     $rules_table = $wpdb->prefix . 'mattress_rules';
     
@@ -67,6 +67,42 @@ function mattress_advisor_render_result( $product, $form_data, $related_products
                 </div>
             </div>
         </div>
+
+        <?php if (!empty($showcase_products)): ?>
+        <div class="product-showcase-suggestions">
+            <h3 class="section-title">
+                <span class="section-icon">✨</span>
+                پیشنهادهای مشابه
+            </h3>
+            <div class="product-showcase-grid">
+                <?php foreach ($showcase_products as $showcase_product): if (!$showcase_product) continue; ?>
+                    <a class="product-showcase-card" href="<?php echo esc_url(get_permalink($showcase_product->get_id())); ?>">
+                        <div class="product-showcase-card-image">
+                            <?php
+                            $showcase_image_id = method_exists($showcase_product, 'get_image_id') ? $showcase_product->get_image_id() : 0;
+                            if ($showcase_image_id) {
+                                echo wp_get_attachment_image(
+                                    $showcase_image_id,
+                                    'woocommerce_thumbnail',
+                                    false,
+                                    [
+                                        'loading' => 'lazy',
+                                        'decoding' => 'async',
+                                        'alt' => $showcase_product->get_name(),
+                                    ]
+                                );
+                            } else {
+                                echo '<img src="' . esc_url(get_the_post_thumbnail_url($showcase_product->get_id(), 'woocommerce_thumbnail')) . '" alt="' . esc_attr($showcase_product->get_name()) . '" loading="lazy" decoding="async">';
+                            }
+                            ?>
+                        </div>
+                        <div class="product-showcase-card-price"><?php echo $showcase_product->get_price_html(); ?></div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
 
         <?php
         $show_short_description = isset($display_options['show_short_description']) && $display_options['show_short_description'];
