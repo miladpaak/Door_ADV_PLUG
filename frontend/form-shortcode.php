@@ -87,25 +87,23 @@ function mattress_advisor_form_shortcode() {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="facade_style">سبک نما <span class="required">*</span></label>
-                        <select id="facade_style" name="facade_style" data-conditional-required="entrance">
-                            <option value="">انتخاب کنید</option>
-                            <option value="modern">مدرن</option>
-                            <option value="neo_classic">نئو کلاسیک</option>
-                            <option value="classic">کلاسیک</option>
-                        </select>
+                        <label>سبک نما <span class="required">*</span></label>
+                        <div class="form-options" role="radiogroup">
+                            <label class="option"><input type="radio" name="facade_style" value="modern" data-conditional-required="entrance"> <span class="option-label">مدرن</span></label>
+                            <label class="option"><input type="radio" name="facade_style" value="neo_classic" data-conditional-required="entrance"> <span class="option-label">نئو کلاسیک</span></label>
+                            <label class="option"><input type="radio" name="facade_style" value="classic" data-conditional-required="entrance"> <span class="option-label">کلاسیک</span></label>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="entrance_material">متریال درب <span class="required">*</span></label>
-                        <select id="entrance_material" name="entrance_material" data-conditional-required="entrance">
-                            <option value="">انتخاب کنید</option>
-                            <option value="wood">چوب</option>
-                            <option value="metal">فلزی</option>
-                            <option value="glass">شیشه</option>
-                            <option value="thermowood">ترمووود</option>
-                            <option value="mdf">MDF</option>
-                            <option value="synthetic_coating">روکش مصنوعی</option>
-                        </select>
+                        <label>متریال درب <span class="required">*</span></label>
+                        <div class="form-options" role="radiogroup">
+                            <label class="option"><input type="radio" name="entrance_material" value="wood" data-conditional-required="entrance"> <span class="option-label">چوب</span></label>
+                            <label class="option"><input type="radio" name="entrance_material" value="metal" data-conditional-required="entrance"> <span class="option-label">فلزی</span></label>
+                            <label class="option"><input type="radio" name="entrance_material" value="glass" data-conditional-required="entrance"> <span class="option-label">شیشه</span></label>
+                            <label class="option"><input type="radio" name="entrance_material" value="thermowood" data-conditional-required="entrance"> <span class="option-label">ترمووود</span></label>
+                            <label class="option"><input type="radio" name="entrance_material" value="mdf" data-conditional-required="entrance"> <span class="option-label">MDF</span></label>
+                            <label class="option"><input type="radio" name="entrance_material" value="synthetic_coating" data-conditional-required="entrance"> <span class="option-label">روکش مصنوعی</span></label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="door_height">ارتفاع (cm) <span class="required">*</span></label>

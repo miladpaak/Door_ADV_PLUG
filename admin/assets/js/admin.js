@@ -25,6 +25,7 @@ jQuery(document).ready(function($) {
         }
 
         var currentValue = productSelect.val();
+        var currentValues = Array.isArray(currentValue) ? currentValue : (currentValue ? [currentValue] : []);
         var hasVisibleOption = false;
 
         productSelect.find('option').each(function(index) {
@@ -49,16 +50,18 @@ jQuery(document).ready(function($) {
 
         if (!categoryId) {
             productSelect.prop('disabled', true);
-            productSelect.val('');
+            productSelect.val([]);
             productSelect.find('option:first').text('ابتدا دسته‌بندی را انتخاب کنید');
             return;
         }
 
         productSelect.prop('disabled', false);
-        productSelect.find('option:first').text(hasVisibleOption ? 'یک محصول را انتخاب کنید' : 'محصولی در این دسته‌بندی یافت نشد');
+        productSelect.find('option:first').text(hasVisibleOption ? 'یک یا چند محصول را انتخاب کنید' : 'محصولی در این دسته‌بندی یافت نشد');
 
-        if (!currentValue || !productSelect.find('option[value="' + currentValue + '"]:visible').length) {
-            productSelect.val('');
+        if (currentValues.length) {
+            var availableValues = productSelect.find('option:visible').map(function(){ return $(this).val(); }).get();
+            var validValues = currentValues.filter(function(v){ return availableValues.indexOf(v) !== -1; });
+            productSelect.val(validValues);
         }
     }
 
@@ -120,14 +123,24 @@ jQuery(document).ready(function($) {
                 $('#edit_key_features').val(rule.key_features);
                 $('#edit_why_suitable').val(rule.why_suitable);
 
-                var editProductOption = $('#edit_product_id').find('option[value="' + rule.product_id + '"]');
-                if (editProductOption.length) {
-                    var categories = (editProductOption.data('categories') || '').toString().split(',').filter(Boolean);
-                    if (categories.length) {
-                        $('#edit_product_category').val(categories[0]);
-                        filterProductsByCategory('#edit_product_category');
+                var selectedProductIds = [];
+                if (rule.product_ids) {
+                    selectedProductIds = String(rule.product_ids).split(',').map(function(v){ return v.trim(); }).filter(Boolean);
+                }
+                if (!selectedProductIds.length && rule.product_id) {
+                    selectedProductIds = [String(rule.product_id)];
+                }
+
+                if (selectedProductIds.length) {
+                    var editProductOption = $('#edit_product_id').find('option[value="' + selectedProductIds[0] + '"]');
+                    if (editProductOption.length) {
+                        var categories = (editProductOption.data('categories') || '').toString().split(',').filter(Boolean);
+                        if (categories.length) {
+                            $('#edit_product_category').val(categories[0]);
+                            filterProductsByCategory('#edit_product_category');
+                        }
                     }
-                    $('#edit_product_id').val(rule.product_id);
+                    $('#edit_product_id').val(selectedProductIds);
                 }
 
                 var conditions = {};
