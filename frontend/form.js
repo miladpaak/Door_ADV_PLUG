@@ -72,6 +72,7 @@ jQuery(document).ready(function($) {
 
     function validateCurrentStep() {
         const step = $('#step-' + currentStep);
+        const doorType = activeDoorType();
         const fields = step.find('[required]').filter(':enabled');
         let ok = true;
 
@@ -121,6 +122,41 @@ jQuery(document).ready(function($) {
             }
 
             $group.addClass('success');
+        });
+
+        const checkboxGroups = {};
+        step.find('input[type="checkbox"][data-conditional-required]:enabled').each(function() {
+            const $checkbox = $(this);
+            const requiredFor = $checkbox.data('conditional-required');
+
+            if (requiredFor !== doorType) {
+                return;
+            }
+
+            const groupName = $checkbox.attr('name');
+            if (!checkboxGroups[groupName]) {
+                checkboxGroups[groupName] = {
+                    group: $checkbox.closest('.form-group'),
+                    hasChecked: false
+                };
+            }
+
+            if ($checkbox.is(':checked')) {
+                checkboxGroups[groupName].hasChecked = true;
+            }
+        });
+
+        Object.values(checkboxGroups).forEach(function(entry) {
+            if (entry.hasChecked) {
+                entry.group.addClass('success');
+                return;
+            }
+
+            ok = false;
+            entry.group.addClass('error');
+            if (!entry.group.find('.error-message').length) {
+                entry.group.append('<div class="error-message">لطفاً حداقل یک گزینه انتخاب کنید</div>');
+            }
         });
 
         return ok;
@@ -178,6 +214,8 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         if (validateCurrentStep()) submitForm();
     });
+
+    $('#mattress-advisor-form').attr('novalidate', true);
 
     $(document).on('change', 'input[name="door_type"]', refreshDoorSections);
     $(document).on('change', 'input[type="radio"], input[type="checkbox"]', function() {
