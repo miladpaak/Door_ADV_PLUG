@@ -378,7 +378,7 @@ function mattress_advisor_rules_page() {
                         </div>
                         <div class="form-row">
                             <div class="form-group"><label for="edit_interior_style">سبک داخلی</label><select name="interior_style" id="edit_interior_style"><option value="">انتخاب کنید</option><option value="modern">مدرن</option><option value="neo_classic">نئو کلاسیک</option><option value="classic">کلاسیک</option></select></div>
-                            <div class="form-group"><label for="edit_color_theme">تم رنگ</label><select name="color_theme" id="edit_color_theme"><option value="">انتخاب کنید</option><option value="colored">رنگی</option><option value="black_theme">تم سیاه</option><option value="light_theme">تم روشن</option></select></div>
+                            <div class="form-group"><label for="edit_color_theme">تم رنگ</label><select name="color_theme" id="edit_color_theme"><option value="">انتخاب کنید</option><option value="colored_wood">رنگی/چوب</option><option value="dark_theme">تیره</option><option value="light_theme">روشن</option></select></div>
                             <div class="form-group"><label for="edit_weatherstrip">نوار درزگیر</label><select name="weatherstrip" id="edit_weatherstrip"><option value="">انتخاب کنید</option><option value="yes">دارد</option><option value="no">ندارد</option></select></div>
                             <div class="form-group"><label for="edit_interior_material">جنس درب داخلی</label><select name="interior_material" id="edit_interior_material"><option value="">انتخاب کنید</option><option value="mdf">MDF</option><option value="melamine">ملامینه</option><option value="abs">ABS</option><option value="polywood">پلی وود</option></select></div>
                         </div>
@@ -468,6 +468,7 @@ function mattress_advisor_rules_page() {
                             <div class="form-row">
                                 <div class="form-group"><label>عرض درب</label><small class="field-help">ارتفاع تا 235 و عرض تا 220 برای درب ضد سرقت</small><div class="range-row"><input type="number" name="door_width_max" min="60" max="350" placeholder="واحد به سانتی متر"></div></div>
                                 <div class="form-group"><label>ارتفاع درب (بازه)</label><div class="range-row"><input type="number" name="door_height_min" min="150" max="350" placeholder="حداقل"><input type="number" name="door_height_max" min="150" max="350" placeholder="حداکثر"></div></div>
+                                <div class="form-group"><label for="color_theme">تم رنگ</label><select name="color_theme" id="color_theme"><option value="">انتخاب کنید</option><option value="colored_wood">رنگی/چوب</option><option value="dark_theme">تیره</option><option value="light_theme">روشن</option></select></div>
                             </div>
                         </div>
 
@@ -480,8 +481,7 @@ function mattress_advisor_rules_page() {
                             </div>
                             <div class="form-row">
                                 <div class="form-group"><label for="interior_style">سبک داخلی</label><select name="interior_style" id="interior_style"><option value="">انتخاب کنید</option><option value="modern">مدرن</option><option value="neo_classic">نئو کلاسیک</option><option value="classic">کلاسیک</option></select></div>
-                                <div class="form-group"><label for="color_theme">تم رنگ</label><select name="color_theme" id="color_theme"><option value="">انتخاب کنید</option><option value="colored">رنگی</option><option value="black_theme">تم سیاه</option><option value="light_theme">تم روشن</option></select></div>
-                                <div class="form-group"><label for="weatherstrip">نوار درزگیر</label><select name="weatherstrip" id="weatherstrip"><option value="">انتخاب کنید</option><option value="yes">دارد</option><option value="no">ندارد</option></select></div>
+                                                                <div class="form-group"><label for="weatherstrip">نوار درزگیر</label><select name="weatherstrip" id="weatherstrip"><option value="">انتخاب کنید</option><option value="yes">دارد</option><option value="no">ندارد</option></select></div>
                                 <div class="form-group"><label for="interior_material">جنس درب داخلی</label><select name="interior_material" id="interior_material"><option value="">انتخاب کنید</option><option value="mdf">MDF</option><option value="melamine">ملامینه</option><option value="abs">ABS</option><option value="polywood">پلی وود</option></select></div>
                             </div>
                         </div>

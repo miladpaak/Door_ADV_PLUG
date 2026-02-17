@@ -755,6 +755,21 @@ function mattress_advisor_normalize_value( $key, $value ) {
                 '100%ضدآب' => 'waterproof',
             ];
             return $map[$val] ?? strtolower($val);
+        case 'color_theme':
+            $map = [
+                'colored' => 'colored_wood',
+                'رنگی' => 'colored_wood',
+                'colored_wood' => 'colored_wood',
+                'رنگی/چوب' => 'colored_wood',
+                'black_theme' => 'dark_theme',
+                'تم سیاه' => 'dark_theme',
+                'dark_theme' => 'dark_theme',
+                'تیره' => 'dark_theme',
+                'light_theme' => 'light_theme',
+                'تم روشن' => 'light_theme',
+                'روشن' => 'light_theme',
+            ];
+            return $map[$val] ?? strtolower($val);
         case 'interior_material':
             $map = [
                 'mdf_melamine' => 'mdf',
@@ -1060,7 +1075,7 @@ function mattress_advisor_is_form_complete($form_data) {
     }
 
     if ($form_data['door_type'] === 'entrance') {
-        $required = ['building_type','weather_exposure','facade_style','entrance_material','door_width','door_height'];
+        $required = ['building_type','weather_exposure','facade_style','entrance_material','color_theme','door_width','door_height'];
         foreach ($required as $field) {
             if (!isset($form_data[$field]) || trim((string)$form_data[$field]) === '') {
                 return false;
