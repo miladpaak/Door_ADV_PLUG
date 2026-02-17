@@ -106,6 +106,14 @@ function mattress_advisor_form_shortcode() {
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>تم رنگ <span class="required">*</span></label>
+                        <div class="form-options" role="radiogroup">
+                            <label class="option"><input type="radio" name="color_theme" value="colored_wood" data-conditional-required="entrance"> <span class="option-label">رنگی/چوب</span></label>
+                            <label class="option"><input type="radio" name="color_theme" value="dark_theme" data-conditional-required="entrance"> <span class="option-label">تیره</span></label>
+                            <label class="option"><input type="radio" name="color_theme" value="light_theme" data-conditional-required="entrance"> <span class="option-label">روشن</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="door_height">ارتفاع (cm) <span class="required">*</span></label>
                         <input type="number" id="door_height" name="door_height" min="150" max="350" data-conditional-required="entrance">
                     </div>
@@ -161,9 +169,9 @@ function mattress_advisor_form_shortcode() {
                     <div class="form-group">
                         <label>تم رنگ <span class="required">*</span></label>
                         <div class="form-options" role="radiogroup">
-                            <label class="option"><input type="radio" name="color_theme" value="colored" data-conditional-required="interior"> <span class="option-label">رنگی</span></label>
-                            <label class="option"><input type="radio" name="color_theme" value="black_theme" data-conditional-required="interior"> <span class="option-label">تم سیاه</span></label>
-                            <label class="option"><input type="radio" name="color_theme" value="light_theme" data-conditional-required="interior"> <span class="option-label">تم روشن</span></label>
+                            <label class="option"><input type="radio" name="color_theme" value="colored_wood" data-conditional-required="interior"> <span class="option-label">رنگی/چوب</span></label>
+                            <label class="option"><input type="radio" name="color_theme" value="dark_theme" data-conditional-required="interior"> <span class="option-label">تیره</span></label>
+                            <label class="option"><input type="radio" name="color_theme" value="light_theme" data-conditional-required="interior"> <span class="option-label">روشن</span></label>
                         </div>
                     </div>
                     <div class="form-group">

@@ -18,22 +18,24 @@ jQuery(document).ready(function($) {
         }
 
         $('[data-conditional-required]').each(function() {
-            const requiredFor = $(this).data('conditional-required');
+            const $field = $(this);
+            const requiredFor = $field.data('conditional-required');
             const isRequired = requiredFor === doorType;
 
-            if ($(this).is(':radio')) {
-                const radioName = $(this).attr('name');
-                $(`input[name="${radioName}"][data-conditional-required]`).prop('required', isRequired).prop('disabled', !isRequired);
-            } else if ($(this).is(':checkbox')) {
-                const checkboxName = $(this).attr('name');
-                $(`input[name="${checkboxName}"][data-conditional-required]`).prop('required', false).prop('disabled', !isRequired);
+            if ($field.is(':radio')) {
+                $field.prop('required', isRequired).prop('disabled', !isRequired);
                 if (!isRequired) {
-                    $(`input[name="${checkboxName}"][data-conditional-required]`).prop('checked', false);
+                    $field.prop('checked', false);
+                }
+            } else if ($field.is(':checkbox')) {
+                $field.prop('required', false).prop('disabled', !isRequired);
+                if (!isRequired) {
+                    $field.prop('checked', false);
                 }
             } else {
-                $(this).prop('required', isRequired).prop('disabled', !isRequired);
+                $field.prop('required', isRequired).prop('disabled', !isRequired);
                 if (!isRequired) {
-                    $(this).val('');
+                    $field.val('');
                 }
             }
         });
